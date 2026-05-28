@@ -1,6 +1,7 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Set;
 
@@ -58,17 +59,22 @@ public abstract class Proiezione {
 
 
 	void aggiungiTag(String tag) {
+		this.contieneTag(tag);
+		this.getTag().add(tag);
+	}
+	
+	void contieneTag(String tag) {
 		for(String t: this.getTag()) {
 			if (tag.equals(t)) {
 				System.out.println("Tag già presente nella lista"); return;
 			}
 		}
-		this.getTag().add(tag);
 	}
 	
+	LocalDateTime getDataOraInizio() {
+		LocalDateTime.of(data, oraInizio);
+	}
 	
-	boolean contieneTag(String tag);
-	LocalDateTime getDataOraInizio();
 	LocalDateTime getDataOraFine();
 	boolean isOggi();
 	boolean isNelWeekend();

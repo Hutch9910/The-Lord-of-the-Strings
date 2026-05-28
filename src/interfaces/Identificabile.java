@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface PrimaInterfaccia {
-
+public interface Identificabile {
+	int getId();
 }
