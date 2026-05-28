@@ -1,6 +1,8 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 import enums.Generi;
@@ -14,7 +16,7 @@ public class Film {
     private String data;
     private Set<Generi> generi;
 
-    private static int contatore;
+    private static int contatore = 0;
 
     public Film(int id, String titolo, String regista, int durata, String data) {
         this.id = id;
@@ -22,8 +24,12 @@ public class Film {
         this.regista = regista;
         this.durata = durata;
         this.data = data;
+        setId();
     }
 
+    private void setId() {
+        id = ++contatore;
+    }
 
     public void aggiungiGenere(Generi genere) {
         generi.add(genere);
@@ -43,15 +49,11 @@ public class Film {
                 + data + ", generi=" + generi + "]");
     }
 
-    // public int tempoVita() {
-    //     LocalDate annoCorrente = LocalDate.now().getYear();
+    public int tempoVita() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-    //     int[] dataDivisa = new int[3];
+        LocalDate creazione = LocalDate.parse(data, formatter);
 
-    //     dataDivisa = data.split("-"); // solo
-
-
-
-    //     int tempoVita = annoCorrente - dataDivisa[2];
-    // }
+        return Period.between(creazione, LocalDate.now()).getYears();
+    }
 }
