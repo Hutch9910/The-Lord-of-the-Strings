@@ -55,4 +55,8 @@ public class Film {
 
         return Period.between(creazione, LocalDate.now()).getYears();
     }
+
+    public boolean isFresh() {
+        return tempoVita() < 2;
+    }
 }
