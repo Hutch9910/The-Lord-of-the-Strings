@@ -18,8 +18,7 @@ public class Film {
 
     private static int contatore = 0;
 
-    public Film(int id, String titolo, String regista, int durata, String data) {
-        this.id = id;
+    public Film(String titolo, String regista, int durata, String data) {
         this.titolo = titolo;
         this.regista = regista;
         this.durata = durata;
