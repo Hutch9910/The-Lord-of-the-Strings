@@ -63,6 +63,7 @@ public abstract class Proiezione {
 				System.out.println("Tag già presente nella lista"); return;
 			}
 		}
+		this.getTag().add(tag);
 	}
 	
 	
